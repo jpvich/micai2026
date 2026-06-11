@@ -1,0 +1,85 @@
+{
+  "metric": "M3 binary size (bytes)",
+  "tool": "stat -f%z (macOS bytes)",
+  "notes": "Python and Julia have no compiled artifact (interpreted); reported as null.",
+  "results": [
+    {
+      "command": "c",
+      "bytes_per_bench": {
+        "kmeans": 33560,
+        "knn": 33680,
+        "mlp": 33616,
+        "ga": 33568,
+        "fuzzy": 33560
+      },
+      "bytes_mean": 33596.8,
+      "bytes_min": 33560,
+      "bytes_max": 33680
+    },
+    {
+      "command": "cpp",
+      "bytes_per_bench": {
+        "kmeans": 33768,
+        "knn": 33904,
+        "mlp": 33632,
+        "ga": 33584,
+        "fuzzy": 33560
+      },
+      "bytes_mean": 33689.6,
+      "bytes_min": 33560,
+      "bytes_max": 33904
+    },
+    {
+      "command": "rust",
+      "bytes_per_bench": {
+        "kmeans": 373504,
+        "knn": 355376,
+        "mlp": 389904,
+        "ga": 373392,
+        "fuzzy": 373344
+      },
+      "bytes_mean": 373104.0,
+      "bytes_min": 355376,
+      "bytes_max": 389904
+    },
+    {
+      "command": "go",
+      "bytes_per_bench": {
+        "kmeans": 2509330,
+        "knn": 2509330,
+        "mlp": 2509714,
+        "ga": 2509474,
+        "fuzzy": 2509298
+      },
+      "bytes_mean": 2509429.2,
+      "bytes_min": 2509298,
+      "bytes_max": 2509714
+    },
+    {
+      "command": "python",
+      "bytes_per_bench": {
+        "kmeans": null,
+        "knn": null,
+        "mlp": null,
+        "ga": null,
+        "fuzzy": null
+      },
+      "bytes_mean": null,
+      "bytes_min": null,
+      "bytes_max": null
+    },
+    {
+      "command": "julia",
+      "bytes_per_bench": {
+        "kmeans": null,
+        "knn": null,
+        "mlp": null,
+        "ga": null,
+        "fuzzy": null
+      },
+      "bytes_mean": null,
+      "bytes_min": null,
+      "bytes_max": null
+    }
+  ]
+}

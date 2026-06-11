@@ -1,0 +1,4 @@
+# Python deps for analysis/plots.py and harness data generation.
+# No benchmark depends on Python; these are for figure generation only.
+numpy>=1.26,<3.0
+matplotlib>=3.8,<4.0

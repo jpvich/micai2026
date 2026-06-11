@@ -1,0 +1,119 @@
+# =============================================================================
+# Public MICAI repository — tracks ONLY the MICAI 2026 study:
+#   6 languages (C, C++, Rust, Go, Python, Julia) x 5 AI benchmarks
+#   (kmeans, knn, mlp, ga, fuzzy), the harness, analysis, results, and paper.
+# Everything from the earlier ICSE study (b1..b8 benchmarks, extra languages,
+# old paper/docs) is kept on disk but excluded from this repo.
+# =============================================================================
+
+# --- macOS ---
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# --- Editors / IDEs ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.zed/
+.claude/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Rust build artifacts ---
+target/
+**/*.rs.bk
+*.pdb
+
+# --- Environment / secrets ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- Logs & scratch ---
+*.log
+logs/
+.rss-tmp/
+backups/
+backups2/
+backups3/
+backups4/
+
+# =============================================================================
+# Legacy ICSE benchmarks (b1_fibonacci .. b8_json_parse) — kept on disk only
+# =============================================================================
+benchmarks/c/b[0-9]_*
+benchmarks/cpp/b[0-9]_*
+benchmarks/go/b[0-9]_*
+benchmarks/rust/src/b[0-9]_*
+benchmarks/julia/b[0-9]_*
+benchmarks/python/b[0-9]_*
+
+# Languages used only in the ICSE study
+benchmarks/java/
+benchmarks/kotlin/
+benchmarks/swift/
+benchmarks/zig/
+benchmarks/cobol/
+
+# Vendored libs only used by the legacy JSON/regex benchmarks
+benchmarks/c/vendor/
+benchmarks/cpp/vendor/
+
+# Legacy input data (only b5_regex / b8_json_parse needed it; MICAI is self-generating)
+data/
+
+# Legacy harness step (generates b5/b8 inputs)
+harness/generate_data.py
+
+# Old ICSE paper, planning docs, and team material
+paper/
+docs/
+README.md
+TEAM_REVIEW.md
+versions.txt
+
+# Internal planning docs (strategy notes — never publish)
+prd/
+
+# Old ICSE result files
+results/b[0-9]_*
+
+# =============================================================================
+# Compiled MICAI benchmark binaries (rebuilt from source; never committed)
+# =============================================================================
+benchmarks/*/kmeans
+benchmarks/*/knn
+benchmarks/*/mlp
+benchmarks/*/ga
+benchmarks/*/fuzzy
+benchmarks/*/*.dSYM/
+
+# Build manifests we DO want to keep
+!benchmarks/go/go.mod
+
+# --- Paper (kept private; not part of the public code/data release) ---
+paper_micai_2026/
+
+# Result placeholder (real result files are committed)
+results/.gitkeep

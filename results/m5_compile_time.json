@@ -1,0 +1,37 @@
+{
+  "metric": "M5 cold-build wall time (seconds, total per language for the 5 MICAI benchmarks)",
+  "tool": "time.perf_counter wrapping subprocess.run on the build command",
+  "notes": "Per-language totals (cargo clean / make clean / go cache wipe between runs). Python and Julia are interpreted -> null.",
+  "results": [
+    {
+      "command": "c",
+      "compile_time_s": 0.932,
+      "notes": "make -j1 (clean), 5 benches"
+    },
+    {
+      "command": "cpp",
+      "compile_time_s": 1.13,
+      "notes": "make -j1 (clean), 5 benches"
+    },
+    {
+      "command": "rust",
+      "compile_time_s": 8.728,
+      "notes": "cargo build --release --bin x5 (clean)"
+    },
+    {
+      "command": "go",
+      "compile_time_s": 3.301,
+      "notes": "go clean -cache + per-bench go build, 5 benches"
+    },
+    {
+      "command": "python",
+      "compile_time_s": null,
+      "notes": "interpreted; no AOT compile step"
+    },
+    {
+      "command": "julia",
+      "compile_time_s": null,
+      "notes": "interpreted; no AOT compile step (JIT cost included in M1 wall time)"
+    }
+  ]
+}

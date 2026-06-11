@@ -1,0 +1,79 @@
+{
+  "metric": "M4 lines of code (implementation only)",
+  "tool": "wc -l",
+  "notes": "Counts the per-benchmark implementation file only (one file per benchmark per language). No external ML libraries are used, so each file is the full from-scratch implementation. Comments and blank lines are counted; relative ranking across languages is what matters.",
+  "results": [
+    {
+      "command": "c",
+      "loc_per_bench": {
+        "kmeans": 77,
+        "knn": 66,
+        "mlp": 96,
+        "ga": 82,
+        "fuzzy": 85
+      },
+      "loc_mean": 81.2,
+      "loc_total": 406
+    },
+    {
+      "command": "cpp",
+      "loc_per_bench": {
+        "kmeans": 74,
+        "knn": 66,
+        "mlp": 94,
+        "ga": 81,
+        "fuzzy": 82
+      },
+      "loc_mean": 79.4,
+      "loc_total": 397
+    },
+    {
+      "command": "rust",
+      "loc_per_bench": {
+        "kmeans": 82,
+        "knn": 74,
+        "mlp": 141,
+        "ga": 90,
+        "fuzzy": 87
+      },
+      "loc_mean": 94.8,
+      "loc_total": 474
+    },
+    {
+      "command": "go",
+      "loc_per_bench": {
+        "kmeans": 87,
+        "knn": 79,
+        "mlp": 157,
+        "ga": 107,
+        "fuzzy": 111
+      },
+      "loc_mean": 108.2,
+      "loc_total": 541
+    },
+    {
+      "command": "python",
+      "loc_per_bench": {
+        "kmeans": 69,
+        "knn": 60,
+        "mlp": 117,
+        "ga": 78,
+        "fuzzy": 82
+      },
+      "loc_mean": 81.2,
+      "loc_total": 406
+    },
+    {
+      "command": "julia",
+      "loc_per_bench": {
+        "kmeans": 95,
+        "knn": 79,
+        "mlp": 146,
+        "ga": 102,
+        "fuzzy": 92
+      },
+      "loc_mean": 102.8,
+      "loc_total": 514
+    }
+  ]
+}
