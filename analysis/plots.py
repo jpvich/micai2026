@@ -213,52 +213,11 @@ def fig3_rss(m2, output_dir):
     print("  fig3_rss")
 
 
-# ── Figure 4: LOC vs time scatter (productivity vs performance) ────────
-def fig4_loc_vs_time(m1, m4, output_dir):
-    """Productivity vs performance. X = mean LOC, Y = geomean wall-time (log).
-    The takeaway: code length barely varies (~1.4x) while speed varies ~300x,
-    and Python sits at almost exactly C's code length yet ~300x slower."""
-    fig, ax = plt.subplots(figsize=(8, 5.5))
-
-    pts = {}
-    for lang in LANGUAGES:
-        loc_vals = [v for v in m4.get(lang, {}).values() if v is not None]
-        times = [m1[b][lang] for b in BENCHMARKS if b in m1 and lang in m1[b]]
-        if not loc_vals or not times:
-            continue
-        pts[lang] = (sum(loc_vals) / len(loc_vals), geomean(times))
-    c_time = pts["c"][1]
-
-    # faint horizontal tier bands relative to C (systems / managed / interpreted)
-    ax.axhspan(c_time * 0.5, c_time * 1.5,   color="#2ca02c", alpha=0.06)
-    ax.axhspan(c_time * 1.5, c_time * 50,    color="#ff7f0e", alpha=0.06)
-    ax.axhspan(c_time * 50,  c_time * 1000,  color="#d62728", alpha=0.06)
-
-    # label offsets to avoid the C/C++ overlap at the bottom-left
-    dy = {"c": 9, "cpp": -13}
-    for lang, (x, y) in pts.items():
-        ax.scatter(x, y, s=210, c=COLORS[lang], edgecolor="black", linewidth=0.7, zorder=5)
-        slow = y / c_time
-        tag = f"{LANG_LABELS[lang]} ({slow:.0f}×)" if slow >= 2 else f"{LANG_LABELS[lang]} ({slow:.2f}×)"
-        ax.annotate(tag, (x, y), fontsize=9, fontweight="bold",
-                    textcoords="offset points", xytext=(11, dy.get(lang, 0)), va="center")
-
-    # connector: C and Python share almost the same LOC -> the headline contrast
-    cx, cy = pts["c"]; px, py = pts["python"]
-    ax.annotate("", xy=(px, py), xytext=(cx, cy),
-                arrowprops=dict(arrowstyle="<->", color="0.4", lw=1.4, ls="--"))
-    ax.text(cx - 1.5, (cy * py) ** 0.5, "same code length,\n${\\sim}300\\times$ slower",
-            fontsize=9, ha="right", va="center", color="0.3", style="italic")
-
-    ax.set_yscale("log")
-    ax.set_xlabel("Mean lines of code per implementation")
-    ax.set_ylabel("Geometric-mean wall-time over 5 benchmarks (s, log scale)")
-    ax.set_title("Code length buys little: speed spans ${\\sim}300\\times$, length barely $1.4\\times$")
-    ax.margins(x=0.20)
-    for ext in ("pdf", "png"):
-        plt.savefig(os.path.join(output_dir, f"fig4_loc_vs_time.{ext}"), bbox_inches="tight")
-    plt.close()
-    print("  fig4_loc_vs_time")
+# ── Figure 4 (LOC vs time scatter) removed: with code length nearly flat
+#    (~1.4x) while time spans ~300x, the scatter showed no real 2D relation,
+#    rested on a contestable "LOC = productivity" axis, and its headline was
+#    an artifact of the no-library design. The point lives, properly caveated,
+#    in the Discussion (RQ2) and the M4 column of the static-metrics table.
 
 
 # ── Figure 5 (static metrics scatter) removed: redundant with the M3/M4/M5
@@ -349,7 +308,6 @@ def main():
     fig1_walltime(m1, args.output_dir)
     fig2_vs_c_heatmap(m1, args.output_dir)
     fig3_rss(m2, args.output_dir)
-    fig4_loc_vs_time(m1, m4, args.output_dir)
     fig6_radar(m1, m2, m3, m4, m5, args.output_dir)
     print("Done.")
 
