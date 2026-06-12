@@ -3,32 +3,35 @@ name = "rust-benchmarks"
 version = "0.1.0"
 edition = "2024"
 
-[[bin]]
-name = "b1_fibonacci"
-path = "src/b1_fibonacci.rs"
-[[bin]]
-name = "b2_bubble_sort"
-path = "src/b2_bubble_sort.rs"
-[[bin]]
-name = "b3_matrix_mul"
-path = "src/b3_matrix_mul.rs"
-[[bin]]
-name = "b4_monte_carlo"
-path = "src/b4_monte_carlo.rs"
-[[bin]]
-name = "b5_regex"
-path = "src/b5_regex.rs"
-[[bin]]
-name = "b6_file_io"
-path = "src/b6_file_io.rs"
-[[bin]]
-name = "b7_concurrent"
-path = "src/b7_concurrent.rs"
-[[bin]]
-name = "b8_json_parse"
-path = "src/b8_json_parse.rs"
+# Legacy ICSE benchmarks (b1-b8) — kept for reference, not part of the MICAI
+# suite. Their sources are not shipped in this repository; uncomment together
+# with the regex/serde dependencies below to build them.
+# [[bin]]
+# name = "b1_fibonacci"
+# path = "src/b1_fibonacci.rs"
+# [[bin]]
+# name = "b2_bubble_sort"
+# path = "src/b2_bubble_sort.rs"
+# [[bin]]
+# name = "b3_matrix_mul"
+# path = "src/b3_matrix_mul.rs"
+# [[bin]]
+# name = "b4_monte_carlo"
+# path = "src/b4_monte_carlo.rs"
+# [[bin]]
+# name = "b5_regex"
+# path = "src/b5_regex.rs"
+# [[bin]]
+# name = "b6_file_io"
+# path = "src/b6_file_io.rs"
+# [[bin]]
+# name = "b7_concurrent"
+# path = "src/b7_concurrent.rs"
+# [[bin]]
+# name = "b8_json_parse"
+# path = "src/b8_json_parse.rs"
 
-# MICAI AI suite (b1-b8 above kept for ICSE reference)
+# MICAI AI suite
 [[bin]]
 name = "kmeans"
 path = "src/kmeans.rs"
@@ -46,9 +49,11 @@ name = "fuzzy"
 path = "src/fuzzy.rs"
 
 [dependencies]
-regex = "1"
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
+# Used only by the legacy b5_regex / b8_json_parse benchmarks above.
+# The MICAI suite (kmeans, knn, mlp, ga, fuzzy) has no external dependencies.
+# regex = "1"
+# serde = { version = "1", features = ["derive"] }
+# serde_json = "1"
 
 [profile.release]
 opt-level = 3
