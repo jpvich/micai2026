@@ -263,7 +263,7 @@ def fig5_static_metrics(m3, m5, output_dir):
 
 # ── Figure 6: Radar — multi-dimensional comparison of top languages ────
 def fig6_radar(m1, m2, m3, m4, m5, output_dir):
-    """Normalized radar for 5 representative languages across 5 dimensions.
+    """Normalized radar for all six languages across 5 dimensions.
 
     Each axis scored 0..1 where 1 = best observed across the 9-language set.
     Dimensions: Speed (1/M1 geomean), Memory (1/M2 geomean), Compactness (1/M4 mean),
@@ -297,9 +297,8 @@ def fig6_radar(m1, m2, m3, m4, m5, output_dir):
             v = raw[l][d]
             normed[l][d] = (v / mx) if v is not None else 0.0  # 0 = missing
 
-    # Pick representative languages: one from each tier
-    # (AOT-native, AOT-modern, GC-compiled, interpreted, JIT-numeric)
-    selected = ["c", "rust", "go", "python", "julia"]
+    # Show all six languages (C and C++ nearly overlap, confirming their tie).
+    selected = LANGUAGES
 
     angles = np.linspace(0, 2 * np.pi, len(dims), endpoint=False).tolist()
     angles += angles[:1]
